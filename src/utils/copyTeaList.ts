@@ -15,7 +15,7 @@ export const copyTeaList = (teaList: Teas, teaCost: number, shippingCost: number
 
     navigator.clipboard
       .writeText(teaListToString)
-      .then(() => alert('Done!'))
+      .then(() => alert('Список успешно скопирован!'))
       .catch(error => console.error(error));
     return;
   } else {
