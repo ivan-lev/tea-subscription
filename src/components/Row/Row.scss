@@ -11,6 +11,11 @@
     color: var(--secondary-font-color);
   }
 
+  &__input:focus-visible {
+    outline: 0;
+    background-color: var(--input-background-color);
+  }
+
   &__button {
     border: 0;
     cursor: pointer;
