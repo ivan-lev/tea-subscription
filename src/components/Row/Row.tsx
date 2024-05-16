@@ -61,7 +61,9 @@ export default function Row({
       <button className="row__button row__button_minus" onClick={removeTea}></button>
       <input
         className="row__input"
-        type="text"
+        type="number"
+        pattern="[0-9]*"
+        inputMode="numeric"
         value={currentCount}
         onChange={handleChange}
       ></input>

@@ -16,6 +16,17 @@
     background-color: var(--input-background-color);
   }
 
+  &__input::-webkit-outer-spin-button,
+  &__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &__input[type='number'] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+
   &__button {
     border: 0;
     cursor: pointer;
