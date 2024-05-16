@@ -42,8 +42,10 @@ export default function Main() {
           <Row key={tea.id} tea={tea} teaList={teaList} setTeaList={setTeaList} />
         ))}
       </div>
-      <span>Доставка: {teaCost >= 4000 ? `бесплатно` : `${shippingCost}р`}</span>
-      <span>Итого: {totalCost}</span>
+      <span className="content__line">
+        Доставка: {teaCost >= 4000 ? `бесплатно` : `${shippingCost}р`}
+      </span>
+      <span className="content__line">Итого: {totalCost}</span>
       <span className="content__buttons">
         <button
           className="content__copy-button"

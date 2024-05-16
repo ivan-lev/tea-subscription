@@ -16,6 +16,10 @@
     font-size: 12px;
   }
 
+  &__line {
+    line-height: 1;
+  }
+
   &__buttons {
     display: flex;
     gap: 10px;
