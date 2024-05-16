@@ -51,11 +51,7 @@ export default function Main() {
         >
           Копировать список
         </button>
-        <a
-          className="content__tg_write"
-          href="https://web.telegram.org/k/#@ivanlev"
-          target="_blank"
-        >
+        <a className="content__tg_write" href="https://t.me/ivanlev" target="_blank">
           <span>Написать</span>
         </a>
       </span>
