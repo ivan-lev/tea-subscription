@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
+  box-sizing: border-box;
 
   &__list {
     display: grid;
