@@ -5,46 +5,30 @@ import { useState, useEffect } from 'react';
 import Row from '../Row/Row';
 
 import { teas } from '../../variables/teas';
-import { Tea } from '../../types/teas';
+import { Teas } from '../../types/teas';
+
+// Utils
+import { calculateShippingCost } from '../../utils/calculateShippingCost';
+import { calculateTeaCost } from '../../utils/calculateTeaCost';
+import { copyTeaList } from '../../utils/copyTeaList';
 
 export default function Main() {
-  const [teaList, setTeaList] = useState(teas);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [teaList, setTeaList] = useState<Teas>(teas);
+  const [teaCost, setTeaCost] = useState<number>(0);
+  const [shippingCost, setShippingCost] = useState<number>(0);
+  const [totalCost, setTotalCost] = useState<number>(0);
 
   useEffect(() => {
-    calculateTotalSum();
+    setTeaCost(calculateTeaCost(teaList));
   }, [teaList]);
 
-  const calculateTotalSum = (): void => {
-    const total = teaList.reduce((accumulator: number, currentTea: Tea): number => {
-      return accumulator + currentTea.count * currentTea.price;
-    }, 0);
-    setTotalPrice(total + 120);
-  };
+  useEffect(() => {
+    setShippingCost(calculateShippingCost(teaCost));
+  }, [teaCost]);
 
-  const copyList = (): void => {
-    if (navigator.clipboard) {
-      let teaListToString: string = '';
-
-      teaList.forEach(tea => {
-        const teaString: string = `${tea.id}. ${tea.name}: ${tea.count}гр на ${
-          tea.price * tea.count
-        } руб`;
-        teaListToString += teaString + '\n';
-      });
-
-      teaListToString += `Итого: ${totalPrice}`;
-
-      navigator.clipboard
-        .writeText(teaListToString)
-        .then(() => alert('Done!'))
-        .catch(error => console.error(error));
-      return;
-    } else {
-      alert('Не получается скопировать на вашем устройстве, просто напишите мне и мы всё решим');
-      return;
-    }
-  };
+  useEffect(() => {
+    setTotalCost(teaCost + shippingCost);
+  }, [teaCost, shippingCost]);
 
   return (
     <main className="content">
@@ -58,9 +42,13 @@ export default function Main() {
           <Row key={tea.id} tea={tea} teaList={teaList} setTeaList={setTeaList} />
         ))}
       </div>
-      Итого: {totalPrice <= 120 ? 0 : totalPrice}
+      <span>Доставка: {teaCost >= 4000 ? `бесплатно` : `${shippingCost}р`}</span>
+      <span>Итого: {totalCost}</span>
       <span className="content__buttons">
-        <button className="content__copy-button" onClick={copyList}>
+        <button
+          className="content__copy-button"
+          onClick={() => copyTeaList(teaList, teaCost, shippingCost)}
+        >
           Копировать список
         </button>
         <a
