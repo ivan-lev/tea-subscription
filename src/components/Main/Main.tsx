@@ -43,7 +43,7 @@ export default function Main() {
         ))}
       </div>
       <span className="content__line">
-        Доставка: {teaCost >= 4000 ? `бесплатно` : `${shippingCost}р`}
+        Чая на {teaCost}р. Доставка: {teaCost >= 4000 ? `бесплатно` : `${shippingCost}р`}
       </span>
       <span className="content__line">Итого: {totalCost}</span>
       <span className="content__buttons">
