@@ -34,7 +34,9 @@
     align-items: center;
     justify-content: center;
     padding: 0 10px;
-    background-color: #ffffff;
+    color: var(--secondary-font-color);
+    text-decoration: none;
+    background-color: var(--button-background-color);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     box-sizing: border-box;
@@ -43,9 +45,6 @@
   }
 
   &__tg_write {
-    color: black;
-    text-decoration: none;
-    display: flex;
     gap: 5px;
   }
 
