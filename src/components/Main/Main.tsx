@@ -33,11 +33,11 @@ export default function Main() {
   return (
     <main className="content">
       <div className="content__list">
-        <span>Название</span>
-        <span>Цена за гр</span>
-        <span></span>
-        <span>Кол-во</span>
-        <span></span>
+        <span className="content__list-header">Название</span>
+        <span className="content__list-header">Цена за гр</span>
+        <span className="content__list-header"></span>
+        <span className="content__list-header">Кол-во</span>
+        <span className="content__list-header"></span>
         {teaList.map(tea => (
           <Row key={tea.id} tea={tea} teaList={teaList} setTeaList={setTeaList} />
         ))}

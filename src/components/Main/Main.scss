@@ -9,7 +9,11 @@
   &__list {
     display: grid;
     gap: 10px;
-    grid-template-columns: 1fr 90px 20px 40px 20px;
+    grid-template-columns: 1fr 50px 20px 45px 20px;
+  }
+
+  &__list-header {
+    font-size: 12px;
   }
 
   &__buttons {
