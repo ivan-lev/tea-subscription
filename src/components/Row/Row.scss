@@ -1,0 +1,37 @@
+.row {
+  &__price {
+    text-align: center;
+  }
+
+  &__input {
+    text-align: center;
+    border: 0;
+    border-radius: 3px;
+    font-size: 14px;
+    color: var(--secondary-font-color);
+  }
+
+  &__button {
+    border: 0;
+    cursor: pointer;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+
+    background-color: var(--main-font-color);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+  }
+
+  &__button_minus {
+    -webkit-mask-image: url('../../assets/minus.svg');
+    mask-image: url('../../assets/minus.svg');
+  }
+
+  &__button_plus {
+    -webkit-mask-image: url('../../assets/plus.svg');
+    mask-image: url('../../assets/plus.svg');
+  }
+}

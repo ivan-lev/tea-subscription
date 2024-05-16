@@ -28,7 +28,6 @@ export default function Row({
     if (currentCount === 0) {
       return;
     }
-
     setCurrentCount(currentCount - 1);
   };
 
@@ -52,17 +51,21 @@ export default function Row({
         newTeaList.push(updatedTeaElement);
       }
     });
-    // console.log(newTeaList);
     setTeaList(newTeaList);
   };
 
   return (
     <>
       <span>{tea.name}</span>
-      <span>{tea.price}р</span>
-      <button onClick={removeTea}>-</button>
-      <input type="text" value={currentCount} onChange={handleChange}></input>
-      <button onClick={addTea}>+</button>
+      <span className="row__price">{tea.price}р</span>
+      <button className="row__button row__button_minus" onClick={removeTea}></button>
+      <input
+        className="row__input"
+        type="text"
+        value={currentCount}
+        onChange={handleChange}
+      ></input>
+      <button className="row__button row__button_plus" onClick={addTea}></button>
     </>
   );
 }
