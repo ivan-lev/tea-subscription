@@ -34,7 +34,7 @@ export default function Main() {
     <main className="content">
       <div className="content__list">
         <span className="content__list-header">Название</span>
-        <span className="content__list-header">Цена за гр</span>
+        <span className="content__list-header">Цена/гр</span>
         <span className="content__list-header"></span>
         <span className="content__list-header">Кол-во</span>
         <span className="content__list-header"></span>

@@ -8,8 +8,8 @@
 
   &__list {
     display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr 50px 20px 45px 20px;
+    gap: 10px 5px;
+    grid-template-columns: 1fr 50px 30px 45px 30px;
   }
 
   &__list-header {
