@@ -1,4 +1,7 @@
 export const calculateShippingCost = (teaCost: number): number => {
+  if (teaCost === 0) {
+    return 0;
+  }
   if (teaCost >= 0 && teaCost < 1500) {
     return 250;
   }
