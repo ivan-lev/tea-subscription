@@ -20,6 +20,10 @@ export default function Row({
     updateTeaList();
   }, [currentCount]);
 
+  useEffect(() => {
+    setCurrentCount(tea.count);
+  }, [teaList]);
+
   const addTea = () => {
     setCurrentCount(currentCount + 1);
   };
