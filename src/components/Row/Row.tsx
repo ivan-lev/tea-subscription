@@ -1,9 +1,14 @@
 import './Row.scss';
 
+//React components
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
+//Types
 import { Tea } from '../../types/teas';
 import { Teas } from '../../types/teas';
+
+//Variables
+import { MIN_WEIGHT_STEP } from '../../variables/variables';
 
 export default function Row({
   tea,
@@ -25,14 +30,14 @@ export default function Row({
   }, [teaList]);
 
   const addTea = () => {
-    setCurrentCount(currentCount + 1);
+    setCurrentCount(currentCount + MIN_WEIGHT_STEP);
   };
 
   const removeTea = () => {
     if (currentCount === 0) {
       return;
     }
-    setCurrentCount(currentCount - 1);
+    setCurrentCount(currentCount - MIN_WEIGHT_STEP);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
