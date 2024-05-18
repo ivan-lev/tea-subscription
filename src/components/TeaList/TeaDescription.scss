@@ -1,0 +1,15 @@
+.tea-description {
+  list-style-type: none;
+
+  &__row::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    padding-right: 10px;
+    background-image: url(../../assets/leaf.svg);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+  }
+}
