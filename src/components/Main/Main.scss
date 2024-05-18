@@ -53,6 +53,7 @@
     font-size: 14px;
     box-sizing: border-box;
     font-family: var(--font-main);
+    line-height: 0;
   }
 
   &__button:hover,
@@ -100,18 +101,31 @@
     mask-image: url('../../assets/vk.svg');
   }
 
-  &__save {
+  &__save,
+  &__about-tea {
     gap: 5px;
   }
 
-  &__save::before {
+  &__save::before,
+  &__about-tea::before {
     content: '';
     width: 20px;
     height: 20px;
-    background-image: url('../../assets/copy.svg');
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
+  }
+
+  &__save::before {
+    background-image: url('../../assets/copy.svg');
+  }
+
+  &__about-tea {
+    margin-left: auto;
+  }
+
+  &__about-tea::before {
+    background-image: url('../../assets/list.svg');
   }
 }

@@ -1,10 +1,16 @@
 import './Main.scss';
 
+// React hooks
 import { useState, useEffect } from 'react';
 
+// Components
 import Row from '../Row/Row';
+import Modal from '../Modal/Modal';
 
+// Variables
 import { teas } from '../../variables/teas';
+
+// Types
 import { Teas } from '../../types/teas';
 
 // Utils
@@ -19,6 +25,7 @@ export default function Main() {
   const [teaCost, setTeaCost] = useState<number>(0);
   const [shippingCost, setShippingCost] = useState<number>(0);
   const [totalCost, setTotalCost] = useState<number>(0);
+  const [isModalShown, setIsModalShown] = useState<boolean>(false);
 
   useEffect(() => {
     setTeaCost(calculateTeaCost(teaList));
@@ -34,6 +41,14 @@ export default function Main() {
 
   return (
     <main className="content">
+      <button
+        className="content__button content__about-tea"
+        onClick={() => {
+          setIsModalShown(true);
+        }}
+      >
+        О чае
+      </button>
       <div className="content__top-buttons">
         <button className="content__button" onClick={() => setTeaList(setTeaCount(0, teaList))}>
           Сбросить
@@ -94,6 +109,7 @@ export default function Main() {
         {/* https://www.svgrepo.com/collection/jtb-logo-glyphs/ */}
         {/* https://www.svgrepo.com/collection/scarlab-duotone-line-vectors/ */}
       </span>
+      <Modal isModalShown={isModalShown} setIsModalShown={setIsModalShown} />
     </main>
   );
 }
