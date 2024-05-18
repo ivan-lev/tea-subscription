@@ -2,13 +2,13 @@ import { Teas } from '../types/teas';
 
 export const copyTeaList = (teaList: Teas, teaCost: number, shippingCost: number) => {
   if (navigator.clipboard) {
-    let teaListToString: string = '';
+    let teaListToString: string = 'Список:\n';
 
     teaList.forEach(tea => {
-      const teaString: string = `${tea.id}. ${tea.name}: ${tea.count}гр на ${
-        tea.price * tea.count
-      } руб`;
-      teaListToString += teaString + '\n';
+      if (tea.count !== 0) {
+        const teaString: string = `- ${tea.name}: ${tea.count}гр на ${tea.price * tea.count} руб`;
+        teaListToString += teaString + '\n';
+      }
     });
 
     teaListToString += `Итого: ${teaCost + shippingCost}`;
