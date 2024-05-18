@@ -1,7 +1,5 @@
 import './Modal.scss';
 
-import { Dispatch, SetStateAction } from 'react';
-
 import TeaDescription from '../TeaList/TeaDescription';
 
 import { Teas } from '../../types/teas';
