@@ -76,11 +76,23 @@ export default function Main() {
           href="https://t.me/ivanlev"
           target="_blank"
         ></a>
+        <a
+          className="content__button content__instagram"
+          href="https://instagram.com/tea_lion"
+          target="_blank"
+        ></a>
+        <a
+          className="content__button content__vk"
+          href="https://vk.com/tea_lion"
+          target="_blank"
+        ></a>
         {/* <a
           className="content__button content__whatsapp"
           href="https://api.whatsapp.com/send/?phone=79030909030?text=ololo"
           target="_blank"
         ></a> */}
+        {/* https://www.svgrepo.com/collection/jtb-logo-glyphs/ */}
+        {/* https://www.svgrepo.com/collection/scarlab-duotone-line-vectors/ */}
       </span>
     </main>
   );

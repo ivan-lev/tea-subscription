@@ -62,7 +62,9 @@
   }
 
   &__telegram,
-  &__whatsapp {
+  &__whatsapp,
+  &__instagram,
+  &__vk {
     min-height: 30px;
     background-color: var(--main-font-color);
     mask-position: center;
@@ -71,7 +73,9 @@
   }
 
   &__telegram:hover,
-  &__whatsapp:hover {
+  &__whatsapp:hover,
+  &__instagram:hover,
+  &__vk:hover {
     background-color: var(--main-font-color);
   }
 
@@ -83,6 +87,15 @@
   &__whatsapp {
     -webkit-mask-image: url('../../assets/whatsapp.svg');
     mask-image: url('../../assets/whatsapp.svg');
+  }
+
+  &__instagram {
+    -webkit-mask-image: url('../../assets/instagram.svg');
+    mask-image: url('../../assets/instagram.svg');
+  }
+  &__vk {
+    -webkit-mask-image: url('../../assets/vk.svg');
+    mask-image: url('../../assets/vk.svg');
   }
 
   &__copy-button:hover,
