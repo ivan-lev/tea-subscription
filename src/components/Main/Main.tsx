@@ -109,7 +109,7 @@ export default function Main() {
         {/* https://www.svgrepo.com/collection/jtb-logo-glyphs/ */}
         {/* https://www.svgrepo.com/collection/scarlab-duotone-line-vectors/ */}
       </span>
-      <Modal isModalShown={isModalShown} setIsModalShown={setIsModalShown} />
+      <Modal isModalShown={isModalShown} setIsModalShown={setIsModalShown} infoToShow={teas} />
     </main>
   );
 }
