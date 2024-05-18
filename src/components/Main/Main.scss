@@ -55,7 +55,8 @@
     font-family: var(--font-main);
   }
 
-  &__button:hover {
+  &__button:hover,
+  &__button:focus {
     opacity: 0.7;
     color: var(--button-hover-font-color);
     background-color: var(--secondary-font-color);
@@ -93,17 +94,24 @@
     -webkit-mask-image: url('../../assets/instagram.svg');
     mask-image: url('../../assets/instagram.svg');
   }
+
   &__vk {
     -webkit-mask-image: url('../../assets/vk.svg');
     mask-image: url('../../assets/vk.svg');
   }
 
-  &__copy-button:hover,
-  &__copy-button:focus,
-  &__telegram:hover,
-  &__telegram:focus,
-  &__whatsapp:hover,
-  &__whatsapp:focus {
-    opacity: 0.7;
+  &__save {
+    gap: 5px;
+  }
+
+  &__save::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-image: url('../../assets/copy.svg');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
   }
 }

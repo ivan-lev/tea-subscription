@@ -65,7 +65,7 @@ export default function Main() {
       <span className="content__line content__line_bold">Итого: {totalCost}</span>
       <span className="content__bottom-buttons">
         <button
-          className="content__button"
+          className="content__button content__save"
           onClick={() => copyTeaList(teaList, teaCost, shippingCost)}
         >
           Копировать список
