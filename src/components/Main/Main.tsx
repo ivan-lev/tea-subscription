@@ -39,14 +39,19 @@ export default function Main() {
     setTotalCost(teaCost + shippingCost);
   }, [teaCost, shippingCost]);
 
+  const handleOpenModal = () => {
+    document.body.style.overflow = 'hidden';
+    setIsModalShown(true);
+  };
+
+  const handleCloseModal = () => {
+    document.body.style.overflow = 'auto';
+    setIsModalShown(false);
+  };
+
   return (
     <main className="content">
-      <button
-        className="content__button content__about-tea"
-        onClick={() => {
-          setIsModalShown(true);
-        }}
-      >
+      <button className="content__button content__about-tea" onClick={handleOpenModal}>
         О чае
       </button>
       <div className="content__top-buttons">
@@ -109,7 +114,7 @@ export default function Main() {
         {/* https://www.svgrepo.com/collection/jtb-logo-glyphs/ */}
         {/* https://www.svgrepo.com/collection/scarlab-duotone-line-vectors/ */}
       </span>
-      <Modal isModalShown={isModalShown} setIsModalShown={setIsModalShown} infoToShow={teas} />
+      <Modal isModalShown={isModalShown} closeModal={handleCloseModal} infoToShow={teas} />
     </main>
   );
 }

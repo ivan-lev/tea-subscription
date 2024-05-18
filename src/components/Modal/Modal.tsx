@@ -8,16 +8,13 @@ import { Teas } from '../../types/teas';
 
 export default function Modal({
   isModalShown,
-  setIsModalShown,
+  closeModal,
   infoToShow
 }: {
   isModalShown: boolean;
-  setIsModalShown: Dispatch<SetStateAction<boolean>>;
+  closeModal: () => void;
   infoToShow: Teas;
 }) {
-  const closeModal = () => {
-    setIsModalShown(false);
-  };
   return (
     isModalShown && (
       <div className="modal" onClick={closeModal}>
