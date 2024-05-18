@@ -51,7 +51,7 @@ export default function Main() {
 
       <div className="content__list">
         <span className="content__list-header">Название</span>
-        <span className="content__list-header">Цена/гр</span>
+        <span className="content__list-header">Цена/г</span>
         <span className="content__list-header"></span>
         <span className="content__list-header">Кол-во</span>
         <span className="content__list-header"></span>
@@ -62,7 +62,7 @@ export default function Main() {
       <span className="content__line">
         Чай: {teaCost}р. Доставка: {teaCost >= 4000 ? `бесплатно` : `${shippingCost}р`}
       </span>
-      <span className="content__line">Итого: {totalCost}</span>
+      <span className="content__line content__line_bold">Итого: {totalCost}</span>
       <span className="content__bottom-buttons">
         <button
           className="content__button"
