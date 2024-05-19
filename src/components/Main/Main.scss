@@ -132,6 +132,12 @@
 
   &__about-tea {
     margin-left: auto;
+    border-color: transparent;
+  }
+
+  &__about-tea:hover {
+    background-color: transparent;
+    color: var(--main-font-color);
   }
 
   &__about-tea::before {
