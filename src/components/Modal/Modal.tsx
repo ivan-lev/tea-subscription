@@ -17,13 +17,15 @@ export default function Modal({
     isModalShown && (
       <div className="modal" onClick={closeModal}>
         <div
-          className="modal__content"
+          className="modal__wrapper"
           onClick={event => {
             event.stopPropagation();
           }}
         >
           <div className="modal__close" onClick={closeModal}></div>
-          <TeaDescription teas={infoToShow} />
+          <div className="modal__content">
+            <TeaDescription teas={infoToShow} />
+          </div>
         </div>
       </div>
     )
