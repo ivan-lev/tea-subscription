@@ -126,6 +126,10 @@
     color: var(--input-background-color);
   }
 
+  &__saved:hover {
+    color: var(--input-background-color);
+  }
+
   &__saved::before {
     background-image: url('../../assets/copy-success.svg');
   }
