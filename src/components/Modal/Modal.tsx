@@ -1,6 +1,6 @@
 import './Modal.scss';
 
-import TeaDescription from '../TeaList/TeaDescription';
+import TeaDescription from '../TeaDescription/TeaDescription';
 
 import { Teas } from '../../types/teas';
 
