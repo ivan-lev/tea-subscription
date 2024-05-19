@@ -1,6 +1,13 @@
 import { Teas } from '../types/teas';
 
-export const copyTeaList = (teaList: Teas, teaCost: number, shippingCost: number) => {
+import { Dispatch, SetStateAction } from 'react';
+
+export const copyTeaList = (
+  teaList: Teas,
+  teaCost: number,
+  shippingCost: number,
+  successSetter: Dispatch<SetStateAction<boolean>>
+): string => {
   if (navigator.clipboard) {
     let teaListToString: string = 'Список:\n';
 
@@ -15,11 +22,11 @@ export const copyTeaList = (teaList: Teas, teaCost: number, shippingCost: number
 
     navigator.clipboard
       .writeText(teaListToString)
-      .then(() => alert('Список успешно скопирован!'))
+      .then(() => successSetter(true))
       .catch(error => console.error(error));
-    return;
+    return teaListToString;
   } else {
     alert('Не получается скопировать на вашем устройстве, просто напишите мне и мы всё решим');
-    return;
+    return 'Список не скопирован';
   }
 };

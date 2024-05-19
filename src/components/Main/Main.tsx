@@ -26,6 +26,7 @@ export default function Main() {
   const [shippingCost, setShippingCost] = useState<number>(0);
   const [totalCost, setTotalCost] = useState<number>(0);
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
+  const [isListCopied, setIsListCopied] = useState<boolean>(false);
 
   useEffect(() => {
     setTeaCost(calculateTeaCost(teaList));
@@ -38,6 +39,10 @@ export default function Main() {
   useEffect(() => {
     setTotalCost(teaCost + shippingCost);
   }, [teaCost, shippingCost]);
+
+  useEffect(() => {
+    setTimeout(() => setIsListCopied(false), 1000);
+  }, [isListCopied]);
 
   const handleOpenModal = () => {
     document.body.style.overflow = 'hidden';
@@ -85,8 +90,10 @@ export default function Main() {
       <span className="content__line content__line_bold">Итого: {totalCost}</span>
       <span className="content__bottom-buttons">
         <button
-          className="content__button content__save"
-          onClick={() => copyTeaList(teaList, teaCost, shippingCost)}
+          className={`content__button ${isListCopied ? 'content__saved' : 'content__save'}`}
+          onClick={() => {
+            copyTeaList(teaList, teaCost, shippingCost, setIsListCopied);
+          }}
         >
           Копировать список
         </button>
@@ -108,7 +115,12 @@ export default function Main() {
         ></a>
         {/* <a
           className="content__button content__whatsapp"
-          href="https://api.whatsapp.com/send/?phone=79030909030?text=ololo"
+          href={`https:/wa.me/79030909030?text=${copyTeaList(
+            teaList,
+            teaCost,
+            shippingCost,
+            setIsListCopied
+          )}`}
           target="_blank"
         ></a> */}
         {/* https://www.svgrepo.com/collection/jtb-logo-glyphs/ */}
