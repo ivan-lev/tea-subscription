@@ -9,22 +9,23 @@ export const copyTeaList = (
   successSetter: Dispatch<SetStateAction<boolean>>
 ): string => {
   if (navigator.clipboard) {
-    let teaListToString: string = 'Список:\n';
+    let copiedList: string = `Список:\n`;
+    copiedList += `===========================\n`;
 
     teaList.forEach(tea => {
       if (tea.count !== 0) {
-        const teaString: string = `- ${tea.name}: ${tea.count}гр на ${tea.price * tea.count} руб`;
-        teaListToString += teaString + '\n';
+        copiedList += `- ${tea.name}: ${tea.count}г на ${tea.price * tea.count}р\n`;
       }
     });
-
-    teaListToString += `Итого: ${teaCost + shippingCost}`;
+    copiedList += `\nЧай: ${teaCost}р, доставка: ${shippingCost}р\n`;
+    copiedList += `===========================\n`;
+    copiedList += `Итого: ${teaCost + shippingCost}р`;
 
     navigator.clipboard
-      .writeText(teaListToString)
+      .writeText(copiedList)
       .then(() => successSetter(true))
       .catch(error => console.error(error));
-    return teaListToString;
+    return copiedList;
   } else {
     alert('Не получается скопировать на вашем устройстве, просто напишите мне и мы всё решим');
     return 'Список не скопирован';
