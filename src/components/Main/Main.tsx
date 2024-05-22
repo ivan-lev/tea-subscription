@@ -13,18 +13,16 @@ import Modal from '../Modal/Modal';
 
 // Utils
 import { setTeaCount, changeTeaCount } from '../../slices/teaSlice';
-import { calculateShippingCost } from '../../utils/calculateShippingCost';
-import { calculateTeaCost } from '../../utils/calculateTeaCost';
 import { copyTeaList } from '../../utils/copyTeaList';
 
 export default function Main() {
-  const [teaCost, setTeaCost] = useState<number>(0);
-  const [shippingCost, setShippingCost] = useState<number>(0);
-  const [totalCost, setTotalCost] = useState<number>(0);
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const [isListCopied, setIsListCopied] = useState<boolean>(false);
 
-  const teaList = useSelector((state: RootState) => state.teas);
+  const teaList = useSelector((state: RootState) => state.teas.list);
+  const teaCost = useSelector((state: RootState) => state.teas.cost);
+  const shippingCost = useSelector((state: RootState) => state.teas.shipping);
+  const totalCost = useSelector((state: RootState) => state.teas.total);
 
   const dispatch = useDispatch();
 
@@ -33,18 +31,6 @@ export default function Main() {
 
   const handleChangeTeaCount = (count: number, id?: number) =>
     dispatch(changeTeaCount({ count: count, id: id }));
-
-  useEffect(() => {
-    setTeaCost(calculateTeaCost(teaList));
-  }, [teaList]);
-
-  useEffect(() => {
-    setShippingCost(calculateShippingCost(teaCost));
-  }, [teaCost]);
-
-  useEffect(() => {
-    setTotalCost(teaCost + shippingCost);
-  }, [teaCost, shippingCost]);
 
   useEffect(() => {
     setTimeout(() => setIsListCopied(false), 1000);
