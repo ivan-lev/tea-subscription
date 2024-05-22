@@ -12,8 +12,9 @@ import Row from '../Row/Row';
 import Modal from '../Modal/Modal';
 
 // Utils
-import { setTeaCount, changeTeaCount } from '../../slices/teaSlice';
 import { copyTeaList } from '../../utils/copyTeaList';
+import { handleSetTeaCount } from '../../utils/handleSetTeaCount';
+import { handleChangeTeaCount } from '../../utils/handleChangeTeaCount';
 
 // Variables
 import { VARIABLES } from '../../variables/variables';
@@ -28,12 +29,6 @@ export default function Main() {
   const totalCost = useSelector((state: RootState) => state.teas.total);
 
   const dispatch = useDispatch();
-
-  const handleSetTeaCount = (count: number, id?: number) =>
-    dispatch(setTeaCount({ count: count, id: id }));
-
-  const handleChangeTeaCount = (count: number, id?: number) =>
-    dispatch(changeTeaCount({ count: count, id: id }));
 
   useEffect(() => {
     setTimeout(() => setIsListCopied(false), 1000);
@@ -55,24 +50,24 @@ export default function Main() {
         О чае
       </button>
       <div className="content__top-buttons">
-        <button className="content__button" onClick={() => handleSetTeaCount(0)}>
+        <button className="content__button" onClick={() => handleSetTeaCount(dispatch, 0)}>
           Сбросить
         </button>
         <button
           className="content__button"
-          onClick={() => handleSetTeaCount(VARIABLES.DEFAULT_WEIGHT)}
+          onClick={() => handleSetTeaCount(dispatch, VARIABLES.DEFAULT_WEIGHT)}
         >
           {VARIABLES.DEFAULT_WEIGHT}г
         </button>
         <button
           className="content__button"
-          onClick={() => handleChangeTeaCount(VARIABLES.MIN_WEIGHT)}
+          onClick={() => handleChangeTeaCount(dispatch, VARIABLES.MIN_WEIGHT)}
         >
           +{VARIABLES.MIN_WEIGHT}г
         </button>
         <button
           className="content__button"
-          onClick={() => handleChangeTeaCount(-VARIABLES.MIN_WEIGHT)}
+          onClick={() => handleChangeTeaCount(dispatch, -VARIABLES.MIN_WEIGHT)}
         >
           -{VARIABLES.MIN_WEIGHT}г
         </button>
