@@ -11,7 +11,7 @@ import { changeTeaCount, setTeaCount } from '../../slices/teaSlice';
 import { Tea } from '../../types/teas';
 
 // Variables
-import { MIN_WEIGHT_STEP } from '../../variables/variables';
+import { VARIABLES } from '../../variables/variables';
 
 export default function Row({ tea }: { tea: Tea }) {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export default function Row({ tea }: { tea: Tea }) {
       <span className="row__price">{tea.price}р</span>
       <button
         className="row__button row__button_minus"
-        onClick={() => handleChangeTeaCount(-MIN_WEIGHT_STEP, tea.id)}
+        onClick={() => handleChangeTeaCount(-VARIABLES.MIN_WEIGHT, tea.id)}
       ></button>
       <input
         className="row__input"
@@ -45,7 +45,7 @@ export default function Row({ tea }: { tea: Tea }) {
       ></input>
       <button
         className="row__button row__button_plus"
-        onClick={() => handleChangeTeaCount(MIN_WEIGHT_STEP, tea.id)}
+        onClick={() => handleChangeTeaCount(VARIABLES.MIN_WEIGHT, tea.id)}
       ></button>
     </>
   );

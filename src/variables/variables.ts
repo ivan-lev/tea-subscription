@@ -1,1 +1,4 @@
-export const MIN_WEIGHT_STEP = 5;
+export const VARIABLES = {
+  MIN_WEIGHT: 5,
+  DEFAULT_WEIGHT: 15
+};

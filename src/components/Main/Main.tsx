@@ -15,6 +15,9 @@ import Modal from '../Modal/Modal';
 import { setTeaCount, changeTeaCount } from '../../slices/teaSlice';
 import { copyTeaList } from '../../utils/copyTeaList';
 
+// Variables
+import { VARIABLES } from '../../variables/variables';
+
 export default function Main() {
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const [isListCopied, setIsListCopied] = useState<boolean>(false);
@@ -55,14 +58,23 @@ export default function Main() {
         <button className="content__button" onClick={() => handleSetTeaCount(0)}>
           Сбросить
         </button>
-        <button className="content__button" onClick={() => handleSetTeaCount(15)}>
-          15гр
+        <button
+          className="content__button"
+          onClick={() => handleSetTeaCount(VARIABLES.DEFAULT_WEIGHT)}
+        >
+          {VARIABLES.DEFAULT_WEIGHT}г
         </button>
-        <button className="content__button" onClick={() => handleChangeTeaCount(5)}>
-          +5гр
+        <button
+          className="content__button"
+          onClick={() => handleChangeTeaCount(VARIABLES.MIN_WEIGHT)}
+        >
+          +{VARIABLES.MIN_WEIGHT}г
         </button>
-        <button className="content__button" onClick={() => handleChangeTeaCount(-5)}>
-          -5гр
+        <button
+          className="content__button"
+          onClick={() => handleChangeTeaCount(-VARIABLES.MIN_WEIGHT)}
+        >
+          -{VARIABLES.MIN_WEIGHT}г
         </button>
       </div>
 
