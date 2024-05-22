@@ -3,30 +3,36 @@ import './Main.scss';
 // React hooks
 import { useState, useEffect } from 'react';
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../slices';
+
 // Components
 import Row from '../Row/Row';
 import Modal from '../Modal/Modal';
 
-// Variables
-import { teas } from '../../variables/teas';
-
-// Types
-import { Teas } from '../../types/teas';
-
 // Utils
+import { setTeaCount, changeTeaCount } from '../../slices/teaSlice';
 import { calculateShippingCost } from '../../utils/calculateShippingCost';
 import { calculateTeaCost } from '../../utils/calculateTeaCost';
 import { copyTeaList } from '../../utils/copyTeaList';
-import { setTeaCount } from '../../utils/setTeaCount';
-import { addTeaCount } from '../../utils/addTeaCount';
 
 export default function Main() {
-  const [teaList, setTeaList] = useState<Teas>(teas);
   const [teaCost, setTeaCost] = useState<number>(0);
   const [shippingCost, setShippingCost] = useState<number>(0);
   const [totalCost, setTotalCost] = useState<number>(0);
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const [isListCopied, setIsListCopied] = useState<boolean>(false);
+
+  const teaList = useSelector((state: RootState) => state.teas);
+
+  const dispatch = useDispatch();
+
+  const handleSetTeaCount = (count: number, id?: number) =>
+    dispatch(setTeaCount({ count: count, id: id }));
+
+  const handleChangeTeaCount = (count: number, id?: number) =>
+    dispatch(changeTeaCount({ count: count, id: id }));
 
   useEffect(() => {
     setTeaCost(calculateTeaCost(teaList));
@@ -60,16 +66,16 @@ export default function Main() {
         О чае
       </button>
       <div className="content__top-buttons">
-        <button className="content__button" onClick={() => setTeaList(setTeaCount(0, teaList))}>
+        <button className="content__button" onClick={() => handleSetTeaCount(0)}>
           Сбросить
         </button>
-        <button className="content__button" onClick={() => setTeaList(setTeaCount(15, teaList))}>
+        <button className="content__button" onClick={() => handleSetTeaCount(15)}>
           15гр
         </button>
-        <button className="content__button" onClick={() => setTeaList(addTeaCount(5, teaList))}>
+        <button className="content__button" onClick={() => handleChangeTeaCount(5)}>
           +5гр
         </button>
-        <button className="content__button" onClick={() => setTeaList(addTeaCount(-5, teaList))}>
+        <button className="content__button" onClick={() => handleChangeTeaCount(-5)}>
           -5гр
         </button>
       </div>
@@ -81,7 +87,7 @@ export default function Main() {
         <span className="content__list-header">Кол-во</span>
         <span className="content__list-header"></span>
         {teaList.map(tea => (
-          <Row key={tea.id} tea={tea} teaList={teaList} setTeaList={setTeaList} />
+          <Row key={tea.id} tea={tea} />
         ))}
       </div>
       <span className="content__line">
@@ -126,7 +132,7 @@ export default function Main() {
         {/* https://www.svgrepo.com/collection/jtb-logo-glyphs/ */}
         {/* https://www.svgrepo.com/collection/scarlab-duotone-line-vectors/ */}
       </span>
-      <Modal isModalShown={isModalShown} closeModal={handleCloseModal} infoToShow={teas} />
+      <Modal isModalShown={isModalShown} closeModal={handleCloseModal} infoToShow={teaList} />
     </main>
   );
 }

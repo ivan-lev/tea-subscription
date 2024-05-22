@@ -1,82 +1,52 @@
 import './Row.scss';
 
-//React components
-import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
+// React components
+import { ChangeEvent } from 'react';
 
-//Types
+// Redux
+import { useDispatch } from 'react-redux';
+import { changeTeaCount, setTeaCount } from '../../slices/teaSlice';
+
+// Types
 import { Tea } from '../../types/teas';
-import { Teas } from '../../types/teas';
 
-//Variables
+// Variables
 import { MIN_WEIGHT_STEP } from '../../variables/variables';
 
-export default function Row({
-  tea,
-  teaList,
-  setTeaList
-}: {
-  tea: Tea;
-  teaList: Teas;
-  setTeaList: Dispatch<SetStateAction<Teas>>;
-}) {
-  const [currentCount, setCurrentCount] = useState(tea.count);
+export default function Row({ tea }: { tea: Tea }) {
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    updateTeaList();
-  }, [currentCount]);
+  const handleChangeTeaCount = (value: number, id: number) =>
+    dispatch(changeTeaCount({ count: value, id: id }));
 
-  useEffect(() => {
-    setCurrentCount(tea.count);
-  }, [teaList]);
-
-  const addTea = () => {
-    setCurrentCount(currentCount + MIN_WEIGHT_STEP);
-  };
-
-  const removeTea = () => {
-    if (currentCount === 0) {
-      return;
-    }
-    setCurrentCount(currentCount - MIN_WEIGHT_STEP);
-  };
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = Number(event.target.value);
-    setCurrentCount(value);
-  };
-
-  const updateTeaList = () => {
-    const newTeaList: Teas = [];
-    teaList.forEach(teaElement => {
-      if (teaElement.id !== tea.id) {
-        newTeaList.push(teaElement);
-      } else {
-        const updatedTeaElement: Tea = {
-          id: tea.id,
-          name: tea.name,
-          price: tea.price,
-          count: currentCount
-        };
-        newTeaList.push(updatedTeaElement);
-      }
-    });
-    setTeaList(newTeaList);
+    if (event.target.value[0] === '0') {
+      event.target.value = value.toString();
+    }
+    dispatch(setTeaCount({ count: value, id: tea.id }));
   };
 
   return (
     <>
       <span>{tea.name}</span>
       <span className="row__price">{tea.price}р</span>
-      <button className="row__button row__button_minus" onClick={removeTea}></button>
+      <button
+        className="row__button row__button_minus"
+        onClick={() => handleChangeTeaCount(-MIN_WEIGHT_STEP, tea.id)}
+      ></button>
       <input
         className="row__input"
         type="number"
         pattern="[0-9]*"
         inputMode="numeric"
-        value={currentCount}
-        onChange={handleChange}
+        value={tea.count}
+        onChange={handleChangeInput}
       ></input>
-      <button className="row__button row__button_plus" onClick={addTea}></button>
+      <button
+        className="row__button row__button_plus"
+        onClick={() => handleChangeTeaCount(MIN_WEIGHT_STEP, tea.id)}
+      ></button>
     </>
   );
 }
