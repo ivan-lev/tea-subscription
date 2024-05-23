@@ -33,7 +33,6 @@ export default function Row({ tea }: { tea: Tea }) {
     <>
       <div className="row__tea-info">
         <p
-          onClick={() => setIsDescriptionShowed(!isDescriptionShowed)}
           onMouseEnter={() => setIsDescriptionShowed(true)}
           onMouseLeave={() => setIsDescriptionShowed(false)}
         >
