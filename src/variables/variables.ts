@@ -3,5 +3,4 @@ export const VARIABLES = {
   DEFAULT_WEIGHT: 15
 };
 
-export const HEADER_INFO =
-  'Наведите курсор на название чая или тапните по нему, чтобы посмотреть информацию';
+export const HEADER_INFO = 'Кликните или тапните по названию чая, чтобы посмотреть информацию';
