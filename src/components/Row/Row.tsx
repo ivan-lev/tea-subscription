@@ -17,7 +17,7 @@ import { handleChangeTeaCount } from '../../utils/handleChangeTeaCount';
 import { VARIABLES } from '../../variables/variables';
 
 export default function Row({ tea }: { tea: Tea }) {
-  const [isMicroModalShowed, setIsMicroModalShowed] = useState<boolean>(false);
+  const [isDescriptionShowed, setIsDescriptionShowed] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -29,28 +29,16 @@ export default function Row({ tea }: { tea: Tea }) {
     handleSetTeaCount(dispatch, value, tea.id);
   };
 
-  const showDescription = () => {
-    setTimeout(() => {
-      setIsMicroModalShowed(true);
-    }, 0);
-  };
-
-  const hideDescription = () => {
-    setTimeout(() => {
-      setIsMicroModalShowed(false);
-    }, 0);
-  };
-
   return (
     <>
       <div
         className="row__tea-info"
-        onClick={() => setIsMicroModalShowed(!isMicroModalShowed)}
-        onMouseEnter={showDescription}
-        onMouseLeave={hideDescription}
+        onClick={() => setIsDescriptionShowed(!isDescriptionShowed)}
+        onMouseEnter={() => setIsDescriptionShowed(true)}
+        onMouseLeave={() => setIsDescriptionShowed(false)}
       >
         <p>{tea.name}</p>
-        {isMicroModalShowed && <p className="row__tea-description">{tea.description}</p>}
+        {isDescriptionShowed && <p className="row__tea-description">{tea.description}</p>}
       </div>
 
       <span className="row__price">{tea.price}р</span>

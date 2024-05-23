@@ -1,9 +1,5 @@
 import './Modal.scss';
 
-import TeaDescription from '../TeaDescription/TeaDescription';
-
-import { Teas } from '../../types/teas';
-
 export default function Modal({
   isModalShown,
   closeModal,
@@ -11,7 +7,7 @@ export default function Modal({
 }: {
   isModalShown: boolean;
   closeModal: () => void;
-  infoToShow: Teas;
+  infoToShow: string;
 }) {
   return (
     isModalShown && (
@@ -23,9 +19,7 @@ export default function Modal({
           }}
         >
           <div className="modal__close" onClick={closeModal}></div>
-          <div className="modal__content">
-            <TeaDescription teas={infoToShow} />
-          </div>
+          <div className="modal__content">{infoToShow}</div>
         </div>
       </div>
     )

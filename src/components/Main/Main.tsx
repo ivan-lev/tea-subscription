@@ -9,7 +9,6 @@ import type { RootState } from '../../slices';
 
 // Components
 import Row from '../Row/Row';
-import Modal from '../Modal/Modal';
 
 // Utils
 import { copyTeaList } from '../../utils/copyTeaList';
@@ -20,7 +19,6 @@ import { handleChangeTeaCount } from '../../utils/handleChangeTeaCount';
 import { VARIABLES } from '../../variables/variables';
 
 export default function Main() {
-  const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const [isListCopied, setIsListCopied] = useState<boolean>(false);
 
   const teaList = useSelector((state: RootState) => state.teas.list);
@@ -34,21 +32,8 @@ export default function Main() {
     setTimeout(() => setIsListCopied(false), 1000);
   }, [isListCopied]);
 
-  const handleOpenModal = () => {
-    document.body.style.overflow = 'hidden';
-    setIsModalShown(true);
-  };
-
-  const handleCloseModal = () => {
-    document.body.style.overflow = 'auto';
-    setIsModalShown(false);
-  };
-
   return (
     <main className="content">
-      <button className="button content__about-tea" onClick={handleOpenModal}>
-        О чае
-      </button>
       <div className="content__top-buttons">
         <button className="button" onClick={() => handleSetTeaCount(dispatch, 0)}>
           Сбросить
@@ -117,7 +102,6 @@ export default function Main() {
         {/* https://www.svgrepo.com/collection/jtb-logo-glyphs/ */}
         {/* https://www.svgrepo.com/collection/scarlab-duotone-line-vectors/ */}
       </span>
-      <Modal isModalShown={isModalShown} closeModal={handleCloseModal} infoToShow={teaList} />
     </main>
   );
 }
