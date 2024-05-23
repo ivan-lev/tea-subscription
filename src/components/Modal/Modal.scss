@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(25, 25, 25, 0.8);
+  background-color: var(--modal-wrapper-color);
   padding: 40px 10px 40px;
 
   &__wrapper {
@@ -16,11 +16,9 @@
     background-color: rgba(50, 50, 50, 1);
     border: 0;
     border-radius: 10px;
-    box-shadow: 10px 10px 30px #111111;
+    box-shadow: 10px 10px 30px var(--shadow-color);
     position: relative;
     font-size: 14px;
-    // max-height: calc(100vh - 80px - 60px);
-    // overflow-y: scroll;
   }
 
   &__close {

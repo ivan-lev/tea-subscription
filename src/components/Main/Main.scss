@@ -44,9 +44,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--main-font-color);
+    color: var(--main-color);
     background-color: transparent;
-    border: 2px solid var(--main-font-color);
+    border: 2px solid var(--main-color);
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
@@ -58,8 +58,8 @@
 
   &__button:hover {
     opacity: 0.7;
-    color: var(--button-hover-font-color);
-    background-color: var(--secondary-font-color);
+    color: var(--hover-color);
+    background-color: var(--secondary-color);
   }
 
   &__telegram,
@@ -67,7 +67,7 @@
   &__instagram,
   &__vk {
     min-height: 30px;
-    background-color: var(--main-font-color);
+    background-color: var(--main-color);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 100%;
@@ -77,7 +77,7 @@
   &__whatsapp:hover,
   &__instagram:hover,
   &__vk:hover {
-    background-color: var(--main-font-color);
+    background-color: var(--main-color);
   }
 
   &__telegram {
@@ -141,7 +141,7 @@
 
   &__about-tea:hover {
     background-color: transparent;
-    color: var(--main-font-color);
+    color: var(--main-color);
   }
 
   &__about-tea::before {
