@@ -31,7 +31,11 @@ export default function Row({ tea }: { tea: Tea }) {
 
   return (
     <>
-      <div className="row__tea-info" onClick={() => setIsDescriptionShowed(!isDescriptionShowed)}>
+      <div
+        className="row__tea-info"
+        onClick={() => setIsDescriptionShowed(!isDescriptionShowed)}
+        onMouseLeave={() => setIsDescriptionShowed(false)}
+      >
         <p>{tea.name}</p>
         {isDescriptionShowed && <p className="row__tea-description">{tea.description}</p>}
       </div>
