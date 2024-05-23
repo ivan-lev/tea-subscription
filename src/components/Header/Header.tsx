@@ -17,7 +17,7 @@ export default function Header() {
       <div className="header__info">
         <button
           className="button button__info"
-          onClick={() => setIsDescriptionShowed(true)}
+          onClick={() => setIsDescriptionShowed(!isDescriptionShowed)}
           onMouseLeave={() => setIsDescriptionShowed(false)}
         ></button>
         {isDescriptionShowed && <p className="header__description">{HEADER_INFO}</p>}
