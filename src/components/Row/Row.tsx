@@ -55,7 +55,7 @@ export default function Row({ tea }: { tea: Tea }) {
 
       <span className="row__price">{tea.price}р</span>
       <button
-        className="row__button row__button_minus"
+        className="button button__minus"
         onClick={() => handleChangeTeaCount(dispatch, -VARIABLES.MIN_WEIGHT, tea.id)}
       ></button>
       <input
@@ -67,7 +67,7 @@ export default function Row({ tea }: { tea: Tea }) {
         onChange={handleChangeInput}
       ></input>
       <button
-        className="row__button row__button_plus"
+        className="button button__plus"
         onClick={() => handleChangeTeaCount(dispatch, VARIABLES.MIN_WEIGHT, tea.id)}
       ></button>
     </>

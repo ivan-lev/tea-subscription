@@ -43,28 +43,4 @@
     appearance: textfield;
     -moz-appearance: textfield;
   }
-
-  &__button {
-    border: 0;
-    cursor: pointer;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-
-    background-color: var(--main-color);
-    mask-position: center;
-    mask-repeat: no-repeat;
-    mask-size: 100%;
-  }
-
-  &__button_minus {
-    -webkit-mask-image: url('../../assets/minus.svg');
-    mask-image: url('../../assets/minus.svg');
-  }
-
-  &__button_plus {
-    -webkit-mask-image: url('../../assets/plus.svg');
-    mask-image: url('../../assets/plus.svg');
-  }
 }

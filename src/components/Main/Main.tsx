@@ -46,27 +46,27 @@ export default function Main() {
 
   return (
     <main className="content">
-      <button className="content__button content__about-tea" onClick={handleOpenModal}>
+      <button className="button content__about-tea" onClick={handleOpenModal}>
         О чае
       </button>
       <div className="content__top-buttons">
-        <button className="content__button" onClick={() => handleSetTeaCount(dispatch, 0)}>
+        <button className="button" onClick={() => handleSetTeaCount(dispatch, 0)}>
           Сбросить
         </button>
         <button
-          className="content__button"
+          className="button"
           onClick={() => handleSetTeaCount(dispatch, VARIABLES.DEFAULT_WEIGHT)}
         >
           {VARIABLES.DEFAULT_WEIGHT}г
         </button>
         <button
-          className="content__button"
+          className="button"
           onClick={() => handleChangeTeaCount(dispatch, VARIABLES.MIN_WEIGHT)}
         >
           +{VARIABLES.MIN_WEIGHT}г
         </button>
         <button
-          className="content__button"
+          className="button"
           onClick={() => handleChangeTeaCount(dispatch, -VARIABLES.MIN_WEIGHT)}
         >
           -{VARIABLES.MIN_WEIGHT}г
@@ -89,7 +89,7 @@ export default function Main() {
       <span className="content__line content__line_bold">Итого: {totalCost}</span>
       <span className="content__bottom-buttons">
         <button
-          className={`content__button ${isListCopied ? 'content__saved' : 'content__save'}`}
+          className={`button ${isListCopied ? 'button__saved' : 'button__save'}`}
           onClick={() => {
             copyTeaList(teaList, teaCost, shippingCost, setIsListCopied);
           }}
@@ -97,21 +97,13 @@ export default function Main() {
           Копировать список
         </button>
         Написать:
+        <a className="button button__telegram" href="https://t.me/ivanlev" target="_blank"></a>
         <a
-          className="content__button content__telegram"
-          href="https://t.me/ivanlev"
-          target="_blank"
-        ></a>
-        <a
-          className="content__button content__instagram"
+          className="button button__instagram"
           href="https://instagram.com/tea_lion"
           target="_blank"
         ></a>
-        <a
-          className="content__button content__vk"
-          href="https://vk.com/tea_lion"
-          target="_blank"
-        ></a>
+        <a className="button button__vk" href="https://vk.com/tea_lion" target="_blank"></a>
         {/* <a
           className="content__button content__whatsapp"
           href={`https:/wa.me/79030909030?text=${copyTeaList(
