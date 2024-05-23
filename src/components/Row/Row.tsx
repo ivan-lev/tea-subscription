@@ -31,13 +31,14 @@ export default function Row({ tea }: { tea: Tea }) {
 
   return (
     <>
-      <div
-        className="row__tea-info"
-        onClick={() => setIsDescriptionShowed(!isDescriptionShowed)}
-        onMouseEnter={() => setIsDescriptionShowed(true)}
-        onMouseLeave={() => setIsDescriptionShowed(false)}
-      >
-        <p>{tea.name}</p>
+      <div className="row__tea-info">
+        <p
+          onClick={() => setIsDescriptionShowed(!isDescriptionShowed)}
+          onMouseEnter={() => setIsDescriptionShowed(true)}
+          onMouseLeave={() => setIsDescriptionShowed(false)}
+        >
+          {tea.name}
+        </p>
         {isDescriptionShowed && <p className="row__tea-description">{tea.description}</p>}
       </div>
 
