@@ -1,7 +1,7 @@
 import './Row.scss';
 
 // React components
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 // Redux
 import { useDispatch } from 'react-redux';
@@ -17,6 +17,8 @@ import { handleChangeTeaCount } from '../../utils/handleChangeTeaCount';
 import { VARIABLES } from '../../variables/variables';
 
 export default function Row({ tea }: { tea: Tea }) {
+  const [isMicroModalShowed, setIsMicroModalShowed] = useState<boolean>(false);
+
   const dispatch = useDispatch();
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -27,9 +29,30 @@ export default function Row({ tea }: { tea: Tea }) {
     handleSetTeaCount(dispatch, value, tea.id);
   };
 
+  const showDescription = () => {
+    setTimeout(() => {
+      setIsMicroModalShowed(true);
+    }, 0);
+  };
+
+  const hideDescription = () => {
+    setTimeout(() => {
+      setIsMicroModalShowed(false);
+    }, 0);
+  };
+
   return (
     <>
-      <span>{tea.name}</span>
+      <div
+        className="row__tea-info"
+        onClick={() => setIsMicroModalShowed(!isMicroModalShowed)}
+        onMouseEnter={showDescription}
+        onMouseLeave={hideDescription}
+      >
+        <p>{tea.name}</p>
+        {isMicroModalShowed && <p className="row__tea-description">{tea.description}</p>}
+      </div>
+
       <span className="row__price">{tea.price}р</span>
       <button
         className="row__button row__button_minus"
