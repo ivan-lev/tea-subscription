@@ -104,12 +104,6 @@
 
     @media screen and (max-width: $width-mini) {
       & {
-        font-size: 12px;
-      }
-    }
-
-    @media screen and (max-width: $width-micro) {
-      & {
         font-size: 11px;
       }
     }
