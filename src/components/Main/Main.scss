@@ -17,6 +17,7 @@
     display: grid;
     gap: 10px 5px;
     grid-template-columns: 1fr 50px 30px 45px 30px;
+    align-items: center;
   }
 
   &__list-header {

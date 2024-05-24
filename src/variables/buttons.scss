@@ -1,3 +1,5 @@
+@import '../variables/screenSizes.scss';
+
 .button {
   min-height: 25px;
   padding: 0 10px;
@@ -99,6 +101,12 @@
   &__save,
   &__saved {
     padding: 0 5px;
+
+    @media screen and (max-width: $width-mini) {
+      & {
+        font-size: 12px;
+      }
+    }
   }
 
   &__save::before {

@@ -1,3 +1,5 @@
+@import '../../variables/screenSizes.scss';
+
 .row {
   &__tea-info {
     position: relative;
@@ -26,6 +28,7 @@
     border-radius: 3px;
     font-size: 14px;
     color: var(--secondary-color);
+    height: 25px;
   }
 
   &__input:focus-visible {
@@ -42,5 +45,11 @@
   &__input[type='number'] {
     appearance: textfield;
     -moz-appearance: textfield;
+  }
+
+  @media screen and (max-width: $width-mini) {
+    &__tea-info {
+      font-size: 15px;
+    }
   }
 }
