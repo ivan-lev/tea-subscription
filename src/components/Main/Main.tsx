@@ -80,7 +80,7 @@ export default function Main() {
         })}
       </div>
       <span className="content__line">
-        Чай: {teaCost}р. Доставка: {teaCost >= 4000 ? `бесплатно` : `${shippingCost}р`}
+        Чай: {teaCost}р. Доставка: {teaCost === 0 ? `бесплатно` : `${shippingCost}р`}
       </span>
       <span className="content__line content__line_bold">Итого: {totalCost}</span>
       <span className="content__bottom-buttons">
