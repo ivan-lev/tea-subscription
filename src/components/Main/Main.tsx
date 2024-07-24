@@ -17,6 +17,7 @@ import { handleChangeTeaCount } from '../../utils/handleChangeTeaCount';
 
 // Variables
 import { VARIABLES } from '../../variables/variables';
+import { zhangping } from '../../variables/teas';
 
 export default function Main() {
   const [isListCopied, setIsListCopied] = useState<boolean>(false);
@@ -57,16 +58,26 @@ export default function Main() {
           -{VARIABLES.MIN_WEIGHT}г
         </button>
       </div>
-
       <div className="content__list">
         <span className="content__list-header">Название</span>
         <span className="content__list-header">Цена/г</span>
         <span className="content__list-header"></span>
         <span className="content__list-header">Кол-во</span>
         <span className="content__list-header"></span>
-        {teaList.map(tea => (
-          <Row key={tea.id} tea={tea} />
-        ))}
+        {teaList.map(tea => {
+          if (tea.isMain) {
+            return <Row key={tea.id} tea={tea} />;
+          }
+        })}
+        <Row key={zhangping.id} tea={zhangping} />
+      </div>
+      Дополнительно
+      <div className="content__list">
+        {teaList.map(tea => {
+          if (!tea.isMain) {
+            return <Row key={tea.id} tea={tea} />;
+          }
+        })}
       </div>
       <span className="content__line">
         Чай: {teaCost}р. Доставка: {teaCost >= 4000 ? `бесплатно` : `${shippingCost}р`}

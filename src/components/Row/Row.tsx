@@ -41,22 +41,43 @@ export default function Row({ tea }: { tea: Tea }) {
       </div>
 
       <span className="row__price">{tea.price}р</span>
-      <button
-        className="button button__minus"
-        onClick={() => handleChangeTeaCount(dispatch, -VARIABLES.MIN_WEIGHT, tea.id)}
-      ></button>
-      <input
+
+      {tea.isBlocked ? (
+        <>
+          <span></span>
+          <span className="row__centered-span">
+            {tea.count} {tea.isByPiece ? 'шт' : 'г'}
+          </span>
+          <span></span>
+        </>
+      ) : (
+        <>
+          <button
+            className="button button__minus"
+            onClick={() => handleChangeTeaCount(dispatch, -VARIABLES.MIN_WEIGHT, tea.id)}
+          ></button>
+          <input
+            className="row__input"
+            type="number"
+            pattern="[0-9]*"
+            inputMode="numeric"
+            value={tea.count}
+            onChange={handleChangeInput}
+          ></input>
+          <button
+            className="button button__plus"
+            onClick={() => handleChangeTeaCount(dispatch, VARIABLES.MIN_WEIGHT, tea.id)}
+          ></button>
+        </>
+      )}
+      {/* <input
         className="row__input"
         type="number"
         pattern="[0-9]*"
         inputMode="numeric"
         value={tea.count}
         onChange={handleChangeInput}
-      ></input>
-      <button
-        className="button button__plus"
-        onClick={() => handleChangeTeaCount(dispatch, VARIABLES.MIN_WEIGHT, tea.id)}
-      ></button>
+      ></input> */}
     </>
   );
 }
