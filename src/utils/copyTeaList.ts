@@ -17,6 +17,7 @@ export const copyTeaList = (
         copiedList += `- ${tea.name}: ${tea.count}г на ${tea.price * tea.count}р\n`;
       }
     });
+    copiedList += `- Чжанпин Шуйсянь (2019): 1шт на 200р\n`;
     copiedList += `\nЧай: ${teaCost}р, доставка: ${shippingCost}р\n`;
     copiedList += `===========================\n`;
     copiedList += `Итого: ${teaCost + shippingCost}р`;
