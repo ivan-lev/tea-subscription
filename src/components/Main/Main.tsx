@@ -29,7 +29,7 @@ export default function Main() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => setIsListCopied(false), 1000);
+    setTimeout(() => isListCopied && setIsListCopied(false), 1500);
   }, [isListCopied]);
 
   return (
@@ -81,7 +81,7 @@ export default function Main() {
             copyTeaList(teaList, teaCost, shippingCost, setIsListCopied);
           }}
         >
-          Копировать список
+          <span>{ !isListCopied ? 'Копировать список' : 'Список скопирован'}</span>
         </button>
         Написать:
         <a className="button button__telegram" href="https://t.me/ivanlev" target="_blank"></a>

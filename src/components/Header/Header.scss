@@ -1,5 +1,4 @@
 .header {
-  flex: 0 0 auto;
   min-height: 80px;
   display: flex;
   align-items: center;
@@ -9,6 +8,7 @@
   width: 100%;
   max-width: 450px;
   position: relative;
+  margin-top: auto;
 
   &__title {
     line-height: 1;

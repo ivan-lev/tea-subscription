@@ -108,19 +108,8 @@
     }
   }
 
-  &__save::before {
-    background-image: url('../assets/copy.svg');
-  }
-
-  &__saved {
-    color: var(--input-background-color);
-  }
-
-  &__saved:hover {
-    color: var(--input-background-color);
-  }
-
+  &__save::before,
   &__saved::before {
-    background-image: url('../assets/copy-success.svg');
+    background-image: url('../assets/copy.svg');
   }
 }
