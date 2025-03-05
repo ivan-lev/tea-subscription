@@ -17,7 +17,6 @@ import { handleChangeTeaCount } from '../../utils/handleChangeTeaCount';
 
 // Variables
 import { VARIABLES } from '../../variables/variables';
-import { zhangping } from '../../variables/teas';
 
 export default function Main() {
   const [isListCopied, setIsListCopied] = useState<boolean>(false);
@@ -69,16 +68,8 @@ export default function Main() {
             return <Row key={tea.id} tea={tea} />;
           }
         })}
-        <Row key={zhangping.id} tea={zhangping} />
       </div>
-      Дополнительно
-      <div className="content__list">
-        {teaList.map(tea => {
-          if (!tea.isMain) {
-            return <Row key={tea.id} tea={tea} />;
-          }
-        })}
-      </div>
+
       <span className="content__line">
         Чай: {teaCost}р. Доставка: {teaCost === 0 ? `бесплатно` : `${shippingCost}р`}
       </span>
@@ -100,18 +91,6 @@ export default function Main() {
           target="_blank"
         ></a>
         <a className="button button__vk" href="https://vk.com/tea_lion" target="_blank"></a>
-        {/* <a
-          className="content__button content__whatsapp"
-          href={`https:/wa.me/79030909030?text=${copyTeaList(
-            teaList,
-            teaCost,
-            shippingCost,
-            setIsListCopied
-          )}`}
-          target="_blank"
-        ></a> */}
-        {/* https://www.svgrepo.com/collection/jtb-logo-glyphs/ */}
-        {/* https://www.svgrepo.com/collection/scarlab-duotone-line-vectors/ */}
       </span>
     </main>
   );
