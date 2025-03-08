@@ -23,14 +23,17 @@
     --rs-btn-subtle-hover-bg: var(--main-color);
 }
 
+.rs-btn {
+    color: var(--main-color) !important;
+}
+
 .rs-btn:hover {
-    background-color: var(--hover-color);
-    --rs-btn-default-hover-text: var(--secondary-color);
+    background-color: transparent !important;
     opacity: 0.7;
 }
 
 .rs-btn-icon {
-    --rs-btn-default-bg: var(--main-color);
+    --rs-btn-default-bg: transparent;
 }
 
 .rs-btn-icon.rs-btn-sm {
