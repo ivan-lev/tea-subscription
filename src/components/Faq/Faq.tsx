@@ -1,5 +1,8 @@
 import './Faq.scss';
 
+// Types
+import type { QA } from '../../types/qa';
+
 // Redux
 import { useDispatch } from 'react-redux';
 import { showCalc } from '../../slices/mainContentSlice';
@@ -17,7 +20,7 @@ export default function Faq() {
     return (
         <section className='faq'>
             <Accordion>
-                { faq.map((faq, i) => {
+                { faq.map((faq: QA, i: number) => {
                     return (
                         <Accordion.Panel header={faq.question} eventKey={i}>
                             {faq.answer}
