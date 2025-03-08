@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import teaReducer from './teaSlice';
+import mainReducer from './mainContentSlice';
 
 const store = configureStore({
   reducer: {
-    teas: teaReducer
+    teas: teaReducer,
+    content: mainReducer
   }
 });
 
